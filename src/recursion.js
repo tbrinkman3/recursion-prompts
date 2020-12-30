@@ -47,15 +47,31 @@ var arraySum = function(array) {
 
   }
   return sum
-  //loop through array
-    //if a single integer add to array
-    //else
-      //loop through array and add values to sum
+
 
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  n = Math.abs(n);
+
+  if (n === 0) {
+    return true
+  }
+
+  if (n === 1) {
+    return false
+  }
+
+  //if n minus 2 is two
+  if (n - 2 === 2) {
+    return true
+  } else if (n - 2 === 1) {
+    return false
+  } else {
+    return isEven(n - 2)
+  }
+
 
 };
 
