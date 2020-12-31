@@ -98,6 +98,28 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+
+  if (x === y || y - x === 1) {
+    return [];
+  }
+
+  if (x > y) {
+    if (x - y === 2) {
+      return [x - 1]
+    } else {
+      var rangeArray = range(x - 1, y);
+      rangeArray.unshift(x - 1);
+      return rangeArray
+    }
+  }
+
+  if (y - x === 2) {
+    return [x + 1]
+  } else {
+    var rangeArray = range(x, y - 1);
+    rangeArray.push(y -1);
+    return rangeArray
+  }
 };
 
 // 7. Compute the exponent of a number.
@@ -251,6 +273,20 @@ var nestedEvenSum = function(obj) {
 // 30. Flatten an array containing nested arrays.
 // flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
 var flatten = function(array) {
+  if (!Array.isArray(array)) {
+    return array
+  }
+
+  var flat = [];
+
+  array.forEach(function(item) {
+    var x = flatten(item);
+
+    flat = flat.concat(x);
+
+  })
+
+  return flat
 };
 
 // 31. Given a string, return an object containing tallies of each letter.
